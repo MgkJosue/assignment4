@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { background: #f4f4f4; padding: 20px; border-radius: 5px; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 3px; }
+        .error { color: red; font-weight: bold; }
+        .result { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Django Calculator</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result %}
+        <p class="result"><strong>Result:</strong> {{ result }}</p>
+    {% elif error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+</body>
+</html>
